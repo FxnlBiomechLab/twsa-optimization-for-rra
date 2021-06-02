@@ -1,7 +1,27 @@
 # rra-optimization
 An evolutionary algorithm-based optimization for tracking weights in the OpenSim Residual Reduction Algorithm (RRA).
 
-RRA-optimization tools written in python is contained in the class definition script "reduceresiduals.py". 
+## Contents
+"\_\_init__.</span>py" - folders containing this file are searchable by the Python environment. This makes classes contained in the same folder available via **import** commands. 
+
+"classTest.</span>py" - Python example script (Jupyter notebook format) demonstrating useage of the classes and methods.
+
+"reduceresiduals.</span>py" - class and methods definitions to perform RRA steps including the tracking weight optimizaiton scheme. Descriptions of classes and methods are below. To include this namespace in your code use:
+```{python}
+import reduceresiduals
+```
+
+required python libraries:
+
+* opensim - [installation instructions for OpenSim python libraries](https://simtk-confluence.stanford.edu:8443/display/OpenSim/Scripting+in+Python)
+* re
+* pandas
+* os 
+* math
+* numpy
+* pickle 
+* subprocess
+
 
 ### Class: rrasetup 
 Calling the constructor **"obj = rrasetup(trialpath, participant, condition, mass)"** returns an object initialized with file tags and folder paths specific to a single motion trial/simulation. This object posesses several methods to perform residual reduction steps as needed.
@@ -45,3 +65,18 @@ Only a constructor method exists for this class. The returned rrafiles object ha
 * genericsetup - unused. Will be removed.
 
 ### Class: rraoptions
+Only a constructor method exists for this class. The returned rraoptions object is used to store settings for the RRA tool and has the following properties.
+* **starttime**
+* **endtime**
+* **bForceset** - True/False whether to replace the model force set or not
+* **bAdjustCOM** - True/False whether to adjust a body center of mass
+* **comBody** - string name of body to adjust (default spec is torso)
+* **trialpath** - system path to trial folder (passed from rrasetup constructor) 
+* **modelname** - filename of model (passed from rrasetup constructor)
+* **actuatorfile** - filename for reserve actuators (passed from rrasetup constructor)
+* **extloadsetup** - filename for external loads specifications (passed from rrasetup constructor)
+* **kinfile** - motion file (passed from rrasetup constructor)
+* **taskfile** - tracking tasks filename
+* **resultspath** - system path to output folder
+* **outname** - output model name
+* **rrasetupfile** - full path name to the RRA tool setup xml file
