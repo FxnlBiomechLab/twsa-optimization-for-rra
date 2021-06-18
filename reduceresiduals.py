@@ -24,7 +24,11 @@ class rrasetup: # constructor method
         self.participant = participant
         self.condition = condition
         self.trialpath = trialpath
-        self.modelname = ''.join(self.participant + '_' + self.condition + '.osim')
+        if self.condition:
+            self.modelname = ''.join(self.participant + '_' + self.condition + '.osim')
+        elif not self.condition:
+            self.modelname = ''.join(self.participant + '.osim')
+        
         self.modfullpath = os.path.join(self.trialpath,self.modelname)
         self.fileset = rrafiles(self.trialpath, self.participant, self.condition)
         self.toolsettings = rraoptions(0,1,True,True,"torso",self.trialpath,self.modelname,
@@ -956,7 +960,12 @@ class rrafiles:
         self.adjresultspath = os.path.join(self.trialpath,"RRA_adjMass")
         self.optpath = os.path.join(self.trialpath,"RRA_optWeights")
         self.finalpath = os.path.join(self.trialpath,"RRA_Final")
-        self.modelname = ''.join(participant + '_' + condition + '.osim')
+        
+        if condition:
+            self.modelname = ''.join(participant + '_' + condition + '.osim')
+        elif not condition:
+            self.modelname = ''.join(participant + '.osim')
+
         self.outname = self.modelname.replace(".osim","_adjMass.osim")
         self.adjname = self.modelname.replace(".osim","_adj.osim")
         self.optname = self.modelname.replace(".osim","_Final.osim")

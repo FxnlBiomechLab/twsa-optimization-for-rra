@@ -25,7 +25,7 @@ required python libraries:
 
 ### Class: rrasetup 
 Calling the constructor **"obj = rrasetup(trialpath, participant, condition, mass)"** returns an object initialized with file tags and folder paths specific to a single motion trial/simulation. This object posesses several methods to perform residual reduction steps as needed.
-### Methods: 
+#### Methods: 
 1. **initialRRA()** - optional arguments: "createTasks", "createReserves", "createExtLoads" all boolean with default to true. This method performs the first iteration of RRA on a  participant scaled model. 
 
 2. **runMassItrsRRA()** - Use after the initial RRA iteration to perform model mass adjustments until the detected mass change is less than 0.001 kg. Maximum number of iterations is 10.
