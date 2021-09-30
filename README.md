@@ -1,10 +1,16 @@
-# rra-optimization
-An evolutionary algorithm-based optimization for tracking weights in the OpenSim Residual Reduction Algorithm (RRA).
+# RRA Optimization for OpenSim
+OpenSim's Residual Reduction Algorithm (RRA) adjusts human movement simulations in order to enhance dynamic consistency. Using RRA in a typical workflow involves iteratively hand-tuning tracking weights to achieve an optimal solution, which is a time-consuming process.
+
+This software package automates the process of optimizing tracking weights. Optimization is performed using the Tracking Weight Selection Algorithm (TWSA), an evolutionary algorithm-based optimization. 
 
 ## Contents
-HamnerOpt folders contains the data used to evaluate the effectiveness of the tracking weight selection algorithm.
-MATLAB contains the libraries required to implement the algorithm in MATLAB.
-Python contains the class definitions and functions required to implement the algorithm in Python.
+Implementations of the TWSA are provided in Python and MATLAB. Instructions on how to run each package are provided in those directories.
 
-### the provided code is compatible with OpenSim v4.2
-The provided files can be adapted to work with the OpenSim v3.# API with a little effort. 
+We also provide a copy of publicly available data from Hamner et al. 2010. These files provide the inputs for generating a simulation of human running, and can be used to test the TWSA.
+
+**Note:** The files provided are compatible with OpenSim 4.0 or later.
+
+## Acknowledgment
+This code is provided under the permissive MIT license. You are free to use, modify, and redistribute it for any purpose. If you use this tool in your research, please cite the following paper:
+
+Sturdy JT, Silverman AK, Pickle NT. Automated optimization of residual reduction algorithm parameters in OpenSim. Preprint.
