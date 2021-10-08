@@ -557,7 +557,7 @@ classdef rrasetup
             % setup
             defaultMass = 75;
             defaultMinItrs = 25;
-            defaultMaxItrs = 70;
+            defaultMaxItrs = 50;
             defaultThresh = 2;
             defaultSwRes = 1; 
             defaultSwErr = 3;
