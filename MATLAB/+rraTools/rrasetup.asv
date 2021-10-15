@@ -1,7 +1,45 @@
 classdef rrasetup    
+    % RRASETUP	Custom class definition to perform OpenSim's residual
+    % reduction algorithm and implements a tracking weight selection
+    % algorithm to optimize (minimize) residual forces and tracking errors.
+    % Requires: 
+    %   OpenSim API https://simtk-confluence.stanford.edu:8443/display/OpenSim/Scripting+with+Matlab
+    %
+    % To use RRASETUP, first add the path containing the "+rraTools"
+    % folder, then call "import rraTools.*" in your .m file or command
+    % window. 
+    % 
+    % RRASETUP properties: 
+    %   Public properties can be set explicitly, or based on the
+    %   constructor to use defaults.
+    %
+    %   participant - text, tag for participant identifier
+    %   condition - text, specific condition tag
+    %   mass - numeric, participant's mass
+    %   trialpath - text, full system path to the trial folder
+    %   modelname - text, constructed from participant and condition tags 
+    %       as: 
+    %           obj.modelname = [obj.participant, '.osim'] (if
+    %           condition field is empty)
+    %       or 
+    %           obj.modelname = [obj.participant, '_', obj.condition, '.osim']
+    %
+    %   modfullfile - text, full system path to model file.
+    %       Constructed by default using trialpath and modelname
+    %   fileset - instance of class rrafiles. 
+    %   toolsettings - instance of class rraoptions. Contains specifications 
+    %       for RRA tool fields.
+    %   initDelMass - numeric, mass change from initialRRA()
+    %   totalDelMass - numeric, total mass change after runMassItrsRRA()
+    %   numMassItrs - integer, number of iterations until mass change
+    %       converged.
+    %
+    %
+    % rrasetup methods:
+    %
+    %
     
-    % Public class properties. Can be set explicitly, or based on the
-    % constructor to use defaults.
+    
     properties
         participant %{mustBeText}
         condition %{mustBeText}
@@ -19,11 +57,12 @@ classdef rrasetup
     
     methods % public methods
         
-        % Constructor. Inputs are used to define relevant directories, file
-        % names, and initial properties of the class instance.
+        
         function obj = rrasetup(trialpath,participant,condition,mass)
-%             import rrafiles
-%             import rraoptions
+        % Constructor Method obj = RRASETUP(trialpath,participant,condition,mass)
+        % Inputs are used to define relevant directories, file names, and 
+        % initial properties of the class instance.
+        %
             
             obj.participant = participant; % text participant tag
             obj.condition = condition; % text condition tag
@@ -47,9 +86,11 @@ classdef rrasetup
         end
         
         function btoolprinted = writeRRATool(obj)
-            % FUNCTION WRITERRATOOL() creates and prints an RRA setup file
-            % based on the settings specified in the toolsettings property
-            % of the class instance.
+            % Method WRITERRATOOL() configures the RRA tool and writes the 
+            % xml setup file using determined settings. Settings are 
+            % specified from the attributes of "rraoptions". These 
+            % attributes can be access through the rrasetup class for 
+            % manual specification.
             
             import org.opensim.modeling.*
             rraTool = RRATool();
@@ -73,21 +114,27 @@ classdef rrasetup
         end
         
         function obj = initialRRA(obj,varargin)
-            % FUNCTION obj = runInitialRRA() performs the first iteration of RRA
-            % and adjusts model masses based on tool output. Optional name
-            % value pair inputs to create tracking tasks, reserve
-            % actuators, and external loads files can be specified. 
+            % Method runInitialRRA() performs the first iteration of RRA
+            % and adjusts model masses based on tool output.  
             % Note: this method should be called as "obj =
-            % obj.runInitialRRA()" so that updates to the properties are
-            % retained through iterations. 
+            % obj.RUNINITIALRRA()" so that total mass changes and other
+            % properties changes are retained through RRA iterations. 
+            %
+            % Optional name value pair arguments: 
             % 
-            % 'CreateTasks', true
-            % 'CreateReserves', true
-            % 'CreateExtLoads', true
-            % Defaults if not specified are false for each. In this case,
-            % each method can be called separately to create the necessary
+            % CreateTasks -- boolean, default is false. Current method
+            %   calls writeTasksFile() method if true.
+            % CreateReserves -- boolean, default is false. Current method
+            %   calls writeReservesFile() method if true.
+            % CreateExtLoads -- boolean, default is falseCurrent method
+            %   calls writeExtLoads() method if true.
+            %
+            % In the default case,
+            % each method should be called separately to create the necessary
             % files, or each file can be copied into the study directory.
             %
+            
+            
             defaultLoads = false;
             defaultReserves=false;
             defaultTasks = false;
@@ -156,9 +203,10 @@ classdef rrasetup
         end % function runInitialRRA
         
         function obj = runMassItrsRRA(obj)
-            % FUNCTION RUNMASSITRSRRA() performs up to 10 iterations of RRA
+            % Method RUNMASSITRSRRA() performs up to 10 iterations of RRA
             % until the recomended mass change is less than the threshold
-            % 0.001. Note: call the method as "obj = obj.runMassItersRRA()"
+            % 0.001. 
+            % Note: call the method as obj = obj.RUNMASSITRSRRA()
             % to track the total mass change and number of iterations.
             
             disp([obj.toolsettings.starttime;obj.toolsettings.endtime])
@@ -211,9 +259,16 @@ classdef rrasetup
         end
         
         function mass_change = adjMass(obj)
+            % Method mass_change = adjMass() Edits the model to make 
+            % recommended mass adjustments.
+            % Helper funciton used by initialRRA and runMassItrsRRA. 
+            % Reads the recommended mass adjustments from the RRA log file, 
+            % and makes mass and COM edits to the model.
+            
             import org.opensim.modeling.*
 
             %Read recommended mass adjustment
+            exist('C:\Users\Jordan\Documents\PhD\rra_tools\rra-optimization\HamnerOpt\subject01\Run_20002\Trial_1\RRA_Final\out.log', 'file')
             fid = fopen(fullfile(obj.toolsettings.resultspath,'out.log'));
             txt = textscan(fid,'%s','delimiter','\n');
             fclose(fid);
@@ -260,31 +315,37 @@ classdef rrasetup
         end % function mass change
         
         function success = writeTasksFile(obj,varargin)
-            % FUNCTION WRITETASKSFILE(obj,varargin) 
-            % Writes a tracking tasks for RRA given the model provided. 
+            % Method WRITETASKSFILE(obj,varargin) 
+            % Configures and writes the tracking task set for RRA given the
+            % model provided. 
             % Reads coordinates from model and assigns tracking tasks to 
             % all non-locked independent coordinates based on user
             % specified values or defaults.
             %
-            % Optional Inputs
-            %   SKIPCOORDINATES - a cell array of non-constrained
+            % Optional name value pair arguments:
+            %
+            % SkipCoordinates - a cell array of non-constrained
             %   coordinates that should not be included in the tracking
             %   tasks. Provided as a name value pair (e.g.
-            %   writeTasksFile('SkipCoordinates',{'bp_tx','bp_ty'})
-            %   KP - numeric value for the proportional gain for all
+            %   writeTasksFile('SkipCoordinates',{'subtalar_angle_r','subtalar_angle_l'})
+            %
+            % Kp - numeric value for the proportional gain for all
             %   tracking tasks (default is 1600). Provided as a name value
             %   pair (e.g. writeTasksFile('Kp',100)). Note, critical
             %   damping will always be enforced by setting Kv = 2*sqrt(Kp).
-            %   UNIFORMWEIGHTS - a boolean entry that sets all tracking
+            %
+            % UniformWeights - a boolean entry that sets all tracking
             %   weights to 1 (default is false). Use name value pair
             %   entry. e.g. writeTasksFile('UniformWeights',true)
-            %   USERWEIGHTS - a cell array containing the coordinate string
+            %
+            % UserWeights - a cell array containing the coordinate string
             %   and desired weight for any non-constrained coordinates.
             %   Coordinates not named in this variable will use the default
             %   weights. To use the same weight for each side, a partial
             %   coordinate name can be specified (e.g. {'ankle'} rather than
-            %   {'ankle_l','ankle_r'}) Names and weights should be supplied
-            %   in the following syntax "{'ankle','knee','hip';25,10,5}" 
+            %   {'ankle_angle_l','ankle_angle_r'}). Names and weights 
+            %   should be supplied in the following syntax: 
+            %   "{'ankle','knee','hip';25,10,5}" 
             %   to be parsed correctly. Use name value pair entry (e.g.
             %   writeTasksFile('UserWeights', {name_array;weight_array} )
             %   Note, user supplied weights are ignored if 'UniformWeights'
@@ -375,17 +436,22 @@ classdef rrasetup
         end % function write tasks
         
         function success = writeReservesFile(obj,varargin)
-        % FUNCTION WRITERESERVESFILE(mod_dir,mod_name,analysis_type) 
-        % Writes a residual actuators file and tracking tasks for RRA or CMC given
-        % the model provided. Reads coordiinates from model and assigns default
-        % reserve actuators and tracking tasks to all non-locked independent
-        % coordinates. Both files are saved into the model directory "mod_dir".
+        % Method WRITERESERVESFILE() 
+        % Configures and prints the reserve actuators force set to xml
+        % file. Reads the model coordinate set, and creates a reserve or
+        % residual actuator for all unconstrained coordinates.
         %
-        % Inputs
-        %   mod_dir - directory where model is saved. Usually the trial directory
-        %   where the analysis is to be performed.
-        %   mod_name - name of the .osim file
-        %   analysis_type - string declaring either "CMC" or "RRA"
+        % Optional name value pair arguments: 
+        %
+        % SkipCoordinates -- a cell array of strings or char arrays 
+        %   specifying any coordinates to not actuate (will be given an 
+        %   optimal force of 1). These will typically be untracked or free 
+        %   coordinates.
+        % ReserveForce -- a numeric input to specify the optimal force 
+        %   for all other reserves (default is 1600)
+        % ResidualForce -- a numeric input to specify the optimal force
+        %   given to residual actuators (FX, FY, FZ, MX, MY, and MZ: default is 100)
+        % 
 
           
             defaultReserve = 1600;
@@ -503,6 +569,10 @@ classdef rrasetup
         end % function write reserves
         
         function b = writeExtLoads(obj)
+            % Method writeExtLoads() configures and prints the external
+            % loads specification xml file based on the rrasetup.fileset
+            % properties.
+            
             import org.opensim.modeling.*
 
             extLoads = ExternalLoads();
@@ -538,16 +608,29 @@ classdef rrasetup
         end
         
         function S = optimizeTrackingWeights(obj,varargin)
+            % Method OPTIMIZETRACKINGWEIGHTS() performs the tracking weight
+            % optimization algorithm using the mass adjusted model.
+            % Optional name value pair arguments:
+            %
+            % min_itrs -- integer to specify a minimum number of iterations to use (default = 25)
+            % max_itrs -- integer to specify a maximum number of iterations (default = 75)
+            % fcn_threshold -- numeric input to specify target cost function value for good enough convergence 
+            % body_mass -- numeric input
+            % wRes -- numeric multiplier for the residual cost term (default = 1) 
+            % wErr -- numeric multiplier for the tracking errors cost term (default = 3)
+            % pRes -- numeric polynomial power for the residual cost term (default = 3)
+            % pErr -- polynomial power for the tracking errors cost term (default = 4)
+            %   
+            % Additional hidden methods contained are helper functions to this main 
+            % tracking weight optimization method.   
+            %
+            % 
+            
+            
             %**************************************************************************
             % OPTIMIZE RESIDUAL FORCES AND TRACKING ERRORS
             %**************************************************************************
-            % RRA Optimization scheme used to reduce residuals and kinematic errors
-            %   through adjusted task weights and actuator opt forces
-            % INPUTS: name - participant label (used in file structure) 
-            %         trial - movement trial label (used in file structure)
-            %         OPTFILES - global variable loaded within function to set file
-            %             paths for all relevant supporting files including base path for
-            %             files, RRA file paths, optimization iteration structure
+  
 
 
             %   Developed by Nathan Pickle October 12, 2016 at Colorado School of Mines
@@ -555,9 +638,9 @@ classdef rrasetup
             %   Further modifications by Jordan Sturdy between 2019 and 2021
             
             % setup
-            defaultMass = 75;
+            %defaultMass = 75;
             defaultMinItrs = 25;
-            defaultMaxItrs = 50;
+            defaultMaxItrs = 75;
             defaultThresh = 2;
             defaultSwRes = 1; 
             defaultSwErr = 3;
@@ -568,7 +651,7 @@ classdef rrasetup
                 addParameter(inpts,'min_itrs',defaultMinItrs,@isnumeric)
                 addParameter(inpts,'max_itrs',defaultMaxItrs,@isnumeric)
                 addParameter(inpts,'fcn_threshold',defaultThresh,@isnumeric)
-                addParameter(inpts,'body_mass',defaultMass,@isnumeric)
+                %addParameter(inpts,'body_mass',defaultMass,@isnumeric)
                 addParameter(inpts,'wRes',defaultSwRes,@isnumeric)
                 addParameter(inpts,'wErr',defaultSwErr,@isnumeric)
                 addParameter(inpts,'pRes',defaultSpRes,@isnumeric)
