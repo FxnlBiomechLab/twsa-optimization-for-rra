@@ -6,7 +6,7 @@ This software package automates the process of optimizing tracking weights. Opti
 ## Contents
 Implementations of the TWSA are provided in Python and MATLAB. Instructions on how to run each package are provided in those directories.
 
-We also provide a copy of publicly available data from Hamner et al. 2010. These files provide the inputs for generating a simulation of human running, and can be used to test the TWSA.
+We also provide a copy of publicly available data from Hamner et al. 2013 (https://simtk.org/projects/nmbl_running). These files provide the inputs for generating a simulation of human running, and can be used to test the TWSA. Hamner SR and Delp SL. Muscle contributions to fore-aft and vertical body mass center accelerations over a range of running speeds. Journal of Biomechanics; 46(4), 780-7. (2013)
 
 **Note:** The files provided are compatible with OpenSim 4.0 or later.
 
