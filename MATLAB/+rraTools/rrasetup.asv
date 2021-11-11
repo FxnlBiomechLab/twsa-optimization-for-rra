@@ -29,7 +29,7 @@ classdef rrasetup
     %   fileset - instance of class rrafiles. 
     %   toolsettings - instance of class rraoptions. Contains specifications 
     %       for RRA tool fields.
-    %   initDelMass - numeric, mass change from initialRRA()
+    %   initDelMass - numeric, mass change from runInitialRRA()
     %   totalDelMass - numeric, total mass change after runMassItrsRRA()
     %   numMassItrs - integer, number of iterations until mass change
     %       converged.
@@ -74,8 +74,8 @@ classdef rrasetup
                 obj.modelname = [obj.participant, '_', obj.condition, '.osim']; % construct the osim model string
             end
             obj.modfullfile = fullfile(obj.trialpath,obj.modelname); % construct the full path name for the osim model
-            obj.fileset = simTools.rrafiles(trialpath, participant, condition); % populate the file set that will be used by the RRATool
-            obj.toolsettings = simTools.rraoptions(0,0,true,true,... % specify the initial settings for the RRATool
+            obj.fileset = rraTools.rrafiles(trialpath, participant, condition); % populate the file set that will be used by the RRATool
+            obj.toolsettings = rraTools.rraoptions(0,0,true,true,... % specify the initial settings for the RRATool
                 "torso",obj.trialpath,obj.modelname,obj.fileset.actuatorfile,...
                 obj.fileset.extloadsetup,obj.fileset.kinfile,obj.fileset.taskfile,...
                 obj.fileset.resultspath,obj.fileset.outname,obj.fileset.rrasetupfile); 
@@ -113,7 +113,7 @@ classdef rrasetup
             btoolprinted = rraTool.print(fullfile(obj.toolsettings.trialpath,obj.toolsettings.rrasetupfile));
         end
         
-        function obj = initialRRA(obj,varargin)
+        function obj = runInitialRRA(obj,varargin)
             % Method runInitialRRA() performs the first iteration of RRA
             % and adjusts model masses based on tool output.  
             % Note: this method should be called as "obj =
@@ -236,7 +236,14 @@ classdef rrasetup
                 if abs(mass_change) < 0.001
                     break
                 end
-
+                
+                if exist(fullfile(obj.toolsettings.resultspath,'out.log'), 'file')
+                    fid = fopen(fullfile(obj.toolsettings.resultspath,'out.log')); % OpenSim v3.x - 4.1
+                elseif exist(fullfile(obj.toolsettings.resultspath,'opensim.log'), 'file')
+                    fid = fopen(fullfile(obj.toolsettings.resultspath,'opensim.log')); % OpenSim v4.2
+                else
+                    warning('log file not found in RRA result directory!')
+                end
                 
                 mydir = cd();
                 cd(obj.toolsettings.resultspath);
@@ -261,17 +268,24 @@ classdef rrasetup
         function mass_change = adjMass(obj)
             % Method mass_change = adjMass() Edits the model to make 
             % recommended mass adjustments.
-            % Helper funciton used by initialRRA and runMassItrsRRA. 
+            % Helper funciton used by runInitialRRA and runMassItrsRRA. 
             % Reads the recommended mass adjustments from the RRA log file, 
             % and makes mass and COM edits to the model.
             
             import org.opensim.modeling.*
 
             %Read recommended mass adjustment
-            exist('C:\Users\Jordan\Documents\PhD\rra_tools\rra-optimization\HamnerOpt\subject01\Run_20002\Trial_1\RRA_Final\out.log', 'file')
-            fid = fopen(fullfile(obj.toolsettings.resultspath,'out.log'));
+            if exist(fullfile(obj.toolsettings.resultspath,'out.log'), 'file')
+                fid = fopen(fullfile(obj.toolsettings.resultspath,'out.log')); % OpenSim v3.x - 4.1
+            elseif exist(fullfile(obj.toolsettings.resultspath,'opensim.log'), 'file')
+                fid = fopen(fullfile(obj.toolsettings.resultspath,'opensim.log')); % OpenSim v4.2
+            else
+                warning('log file not found in RRA result directory!')
+            end
+            
             txt = textscan(fid,'%s','delimiter','\n');
             fclose(fid);
+                
             str = '*  Total mass change: ';
             lineLoc = contains(cellfun(@num2str,txt{1},'UniformOutput',false),str);
             line = txt{1}{lineLoc};
@@ -301,7 +315,7 @@ classdef rrasetup
                 apivers = '3.3';
             end
             if contains(apivers,'4.')
-                res = model.scale(state,scaleset,true,newMass); % OpenSim V4.2
+                res = model.scale(state,scaleset,true,newMass); % OpenSim v4.2
             else
                 res = model.scale(state,scaleset,newMass,true);
             end
@@ -603,7 +617,11 @@ classdef rrasetup
             extLoads.cloneAndAppend(exfl);
 
             extLoads.setDataFileName(fullfile(obj.fileset.trialpath,obj.fileset.grffile));
-            extLoads.setExternalLoadsModelKinematicsFileName(fullfile(obj.fileset.trialpath,obj.fileset.kinfile));
+            % setExternalLoadsModelKinematicsFileName is only a method in
+            % OpenSim v3.3 and prior. This is not needed even if running
+            % rraTools using the 3.3 API. Will be fully removed after
+            % verifying. JS
+            % extLoads.setExternalLoadsModelKinematicsFileName(fullfile(obj.fileset.trialpath,obj.fileset.kinfile));
             b = extLoads.print(fullfile(obj.fileset.trialpath,obj.fileset.extloadsetup));
         end
         

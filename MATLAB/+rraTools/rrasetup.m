@@ -29,7 +29,7 @@ classdef rrasetup
     %   fileset - instance of class rrafiles. 
     %   toolsettings - instance of class rraoptions. Contains specifications 
     %       for RRA tool fields.
-    %   initDelMass - numeric, mass change from initialRRA()
+    %   initDelMass - numeric, mass change from runInitialRRA()
     %   totalDelMass - numeric, total mass change after runMassItrsRRA()
     %   numMassItrs - integer, number of iterations until mass change
     %       converged.
@@ -74,8 +74,8 @@ classdef rrasetup
                 obj.modelname = [obj.participant, '_', obj.condition, '.osim']; % construct the osim model string
             end
             obj.modfullfile = fullfile(obj.trialpath,obj.modelname); % construct the full path name for the osim model
-            obj.fileset = simTools.rrafiles(trialpath, participant, condition); % populate the file set that will be used by the RRATool
-            obj.toolsettings = simTools.rraoptions(0,0,true,true,... % specify the initial settings for the RRATool
+            obj.fileset = rraTools.rrafiles(trialpath, participant, condition); % populate the file set that will be used by the RRATool
+            obj.toolsettings = rraTools.rraoptions(0,0,true,true,... % specify the initial settings for the RRATool
                 "torso",obj.trialpath,obj.modelname,obj.fileset.actuatorfile,...
                 obj.fileset.extloadsetup,obj.fileset.kinfile,obj.fileset.taskfile,...
                 obj.fileset.resultspath,obj.fileset.outname,obj.fileset.rrasetupfile); 
@@ -113,7 +113,7 @@ classdef rrasetup
             btoolprinted = rraTool.print(fullfile(obj.toolsettings.trialpath,obj.toolsettings.rrasetupfile));
         end
         
-        function obj = initialRRA(obj,varargin)
+        function obj = runInitialRRA(obj,varargin)
             % Method runInitialRRA() performs the first iteration of RRA
             % and adjusts model masses based on tool output.  
             % Note: this method should be called as "obj =
@@ -185,6 +185,16 @@ classdef rrasetup
             if ~isfolder(obj.fileset.resultspath) % create result folder if needed
                 mkdir(obj.fileset.resultspath);
             end
+            
+            % OpenSim 4.x has started appending to the log file rather
+            % than overwriting. Delete the existing log file prior to
+            % running the tool.
+            if exist(fullfile(obj.toolsettings.resultspath,'out.log'), 'file')
+                delete(fullfile(obj.toolsettings.resultspath,'out.log')); % OpenSim v3.x - 4.1
+            elseif exist(fullfile(obj.toolsettings.resultspath,'opensim.log'), 'file')
+                delete(fullfile(obj.toolsettings.resultspath,'opensim.log')); % OpenSim v4.2
+            end
+
             mydir = cd(); % remember current directory
             cd(obj.fileset.resultspath); % move to results folder to run analysis
             % create string to send to the command line
@@ -236,7 +246,15 @@ classdef rrasetup
                 if abs(mass_change) < 0.001
                     break
                 end
-
+                
+                % OpenSim 4.x has started appending to the log file rather
+                % than overwriting. Delete the existing log file prior to
+                % running the tool.
+                if exist(fullfile(obj.toolsettings.resultspath,'out.log'), 'file')
+                    delete(fullfile(obj.toolsettings.resultspath,'out.log')); % OpenSim v3.x - 4.1
+                elseif exist(fullfile(obj.toolsettings.resultspath,'opensim.log'), 'file')
+                    delete(fullfile(obj.toolsettings.resultspath,'opensim.log')); % OpenSim v4.2
+                end
                 
                 mydir = cd();
                 cd(obj.toolsettings.resultspath);
@@ -261,7 +279,7 @@ classdef rrasetup
         function mass_change = adjMass(obj)
             % Method mass_change = adjMass() Edits the model to make 
             % recommended mass adjustments.
-            % Helper funciton used by initialRRA and runMassItrsRRA. 
+            % Helper funciton used by runInitialRRA and runMassItrsRRA. 
             % Reads the recommended mass adjustments from the RRA log file, 
             % and makes mass and COM edits to the model.
             
@@ -270,7 +288,7 @@ classdef rrasetup
             %Read recommended mass adjustment
             if exist(fullfile(obj.toolsettings.resultspath,'out.log'), 'file')
                 fid = fopen(fullfile(obj.toolsettings.resultspath,'out.log')); % OpenSim v3.x - 4.1
-            elseif fullfile(obj.toolsettings.resultspath,'opensim.log')
+            elseif exist(fullfile(obj.toolsettings.resultspath,'opensim.log'), 'file')
                 fid = fopen(fullfile(obj.toolsettings.resultspath,'opensim.log')); % OpenSim v4.2
             else
                 warning('log file not found in RRA result directory!')
@@ -610,7 +628,11 @@ classdef rrasetup
             extLoads.cloneAndAppend(exfl);
 
             extLoads.setDataFileName(fullfile(obj.fileset.trialpath,obj.fileset.grffile));
-            extLoads.setExternalLoadsModelKinematicsFileName(fullfile(obj.fileset.trialpath,obj.fileset.kinfile));
+            % setExternalLoadsModelKinematicsFileName is only a method in
+            % OpenSim v3.3 and prior. This is not needed even if running
+            % rraTools using the 3.3 API. Will be fully removed after
+            % verifying. JS
+            % extLoads.setExternalLoadsModelKinematicsFileName(fullfile(obj.fileset.trialpath,obj.fileset.kinfile));
             b = extLoads.print(fullfile(obj.fileset.trialpath,obj.fileset.extloadsetup));
         end
         
@@ -786,7 +808,7 @@ classdef rrasetup
                 end
                 % exectute task optimization famework (preturb task values, run rra
                 %   iteration, calculate objective function new value
-                [i,S] = obj.executeRRAOptLoop(S,i,inpts.Results.body_mass);
+                [i,S] = obj.executeRRAOptLoop(S,i,body_mass);
 
                 % exit optimization if we have found an acceptable solution after a
                 % minimum # of iterations.
