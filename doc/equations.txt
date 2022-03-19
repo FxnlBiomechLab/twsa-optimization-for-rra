@@ -1,0 +1,8 @@
+Latex-formatted equations used in algorithm description. Equations were converted to markdown-renderable versions using https://www.codecogs.com/latex/eqneditor.php
+
+W_{R}\sum_{i=1}^{m}(w_{i}R_{i})^{p_{R}}+W_{E}\sum_{j=1}^{n}(w_{j}R_{j})^{p_{E}}
+
+\tau_{j}=b^t
+
+\newline x_{j,new}=b^{t}x_{j,old}
+\newline x_{j,new}=1.5^{1}*1=1.5
