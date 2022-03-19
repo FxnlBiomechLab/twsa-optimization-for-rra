@@ -14,17 +14,18 @@ classdef rraoptions
         resultspath
         outname
         rrasetupfile
+        LPhz
     end
     methods
-        function obj = rraoptions(starttime,endtime,bForceset,bAdjustCOM,...
-                comBody,trialpath,modelname,actuatorfile,extloadsetup,...
-                kinfile,taskfile,resultspath,outname,rrasetupfile)
+        function obj = rraoptions(trialpath,modelname,actuatorfile,...
+                extloadsetup,kinfile,taskfile,resultspath,outname,...
+                rrasetupfile)
             
-            obj.starttime = starttime;
-            obj.endtime = endtime;
-            obj.bForceset = bForceset;
-            obj.bAdjustCOM = bAdjustCOM;
-            obj.comBody = comBody;
+            obj.starttime = 0;
+            obj.endtime = 0;
+            obj.bForceset = true;
+            obj.bAdjustCOM = true;
+            obj.comBody = "torso";
             obj.trialpath = trialpath;
             obj.modelname = modelname;
             obj.actuatorfile = actuatorfile;
@@ -34,6 +35,7 @@ classdef rraoptions
             obj.resultspath = resultspath;
             obj.outname = outname;
             obj.rrasetupfile = rrasetupfile;
+            obj.LPhz = -1;
         end
     end   
 end
