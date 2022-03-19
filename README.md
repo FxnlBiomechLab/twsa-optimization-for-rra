@@ -1,5 +1,5 @@
 # Tracking Weight Selection Algorithm (TWSA) Optimization for the OpenSim Residual Reduction Algorithm
-OpenSim's Residual Reduction Algorithm (RRA) adjusts human movement simulations in order to enhance dynamic consistency. Using RRA in a typical workflow involves iteratively hand-tuning tracking weights to achieve an optimal solution, which is a time-consuming process.
+OpenSim's Residual Reduction Algorithm (RRA) adjusts human movement simulations in order to improve dynamic consistency. Using RRA in a typical workflow involves iteratively hand-tuning tracking weights to achieve an optimal solution, which is a time-consuming process.
 
 This software package automates the process of optimizing tracking weights. Optimization is performed using the Tracking Weight Selection Algorithm (TWSA), an evolutionary algorithm-based optimization. 
 
