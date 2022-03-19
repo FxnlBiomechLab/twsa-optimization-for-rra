@@ -1,0 +1,162 @@
+[2021-10-12 12:51:32.933] [info] Old version storage/motion file encountered
+[2021-10-12 12:51:32.933] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 12:51:32.933] [info] .. assuming rotations in Degrees..
+[2021-10-12 12:51:33.036] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:15:21.846] [info] Old version storage/motion file encountered
+[2021-10-12 13:15:21.846] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 13:15:21.846] [info] .. assuming rotations in Degrees..
+[2021-10-12 13:15:21.950] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:15:22.099] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:16:11.463] [info] Old version storage/motion file encountered
+[2021-10-12 13:16:11.463] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 13:16:11.463] [info] .. assuming rotations in Degrees..
+[2021-10-12 13:16:11.561] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:16:11.718] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:16:24.814] [info] Old version storage/motion file encountered
+[2021-10-12 13:16:24.814] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 13:16:24.814] [info] .. assuming rotations in Degrees..
+[2021-10-12 13:16:24.914] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:16:25.080] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:23:25.106] [info] Old version storage/motion file encountered
+[2021-10-12 13:23:25.106] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 13:23:25.106] [info] .. assuming rotations in Degrees..
+[2021-10-12 13:23:25.175] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:23:25.300] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:24:51.527] [info] Old version storage/motion file encountered
+[2021-10-12 13:24:51.527] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 13:24:51.527] [info] .. assuming rotations in Degrees..
+[2021-10-12 13:24:51.609] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:24:51.743] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:25:21.858] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adjMass.osim
+[2021-10-12 13:25:22.184] [info] Old version storage/motion file encountered
+[2021-10-12 13:25:22.184] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 13:25:22.184] [info] .. assuming rotations in Degrees..
+[2021-10-12 13:25:53.211] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adjMass.osim
+[2021-10-12 13:26:26.141] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adjMass.osim
+[2021-10-12 13:26:58.040] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adjMass.osim
+[2021-10-12 13:26:58.444] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:26:58.515] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:26:58.581] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:27:28.498] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:27:28.772] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:27:28.851] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:27:28.909] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:28:01.194] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:28:01.428] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:28:01.498] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:28:01.550] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:28:32.861] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:28:33.127] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:28:33.215] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:28:33.278] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:29:05.265] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:29:05.497] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:29:05.557] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:29:05.607] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:29:36.436] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:29:36.702] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:29:36.779] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:29:36.834] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:30:05.791] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:30:06.041] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:30:06.113] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:30:06.161] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:30:34.554] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:30:34.768] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:30:34.828] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:30:34.875] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:31:02.689] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:31:02.917] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:31:02.975] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:31:03.023] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:31:31.333] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:31:31.561] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:31:31.620] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:31:31.666] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:31:59.840] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:32:00.077] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:32:00.142] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:32:00.189] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:32:29.070] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:32:29.276] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:32:29.339] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:32:29.389] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:32:57.514] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:32:57.717] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:32:57.778] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:32:57.826] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:33:26.206] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:33:26.427] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:33:26.484] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:33:26.536] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:33:54.792] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:33:55.026] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:33:55.090] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:33:55.141] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:34:24.110] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:34:24.325] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:34:24.383] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:34:24.428] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:34:52.670] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:34:52.880] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:34:52.937] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:34:52.988] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:35:20.830] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:35:21.061] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:35:21.117] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:35:21.162] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:35:49.336] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:35:49.568] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:35:49.625] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:35:49.673] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:36:17.417] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:36:17.639] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:36:17.695] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:36:17.748] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:36:45.998] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:36:46.210] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:36:46.269] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:36:46.317] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:37:14.853] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:37:15.075] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:37:15.132] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:37:15.179] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:37:43.005] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:37:43.228] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:37:43.293] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:37:43.340] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:38:11.729] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:38:11.945] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:38:12.002] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:38:12.047] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:38:40.857] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:38:41.065] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:38:41.128] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:38:41.174] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:39:09.779] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:39:09.995] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:39:10.052] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:39:10.102] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:39:38.044] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:39:38.265] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:39:38.320] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:39:38.365] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 13:40:06.645] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adj.osim
+[2021-10-12 13:40:06.844] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:40:06.910] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 13:40:06.955] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml
+[2021-10-12 14:14:39.531] [info] Old version storage/motion file encountered
+[2021-10-12 14:14:39.531] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 14:14:39.531] [info] .. assuming rotations in Degrees..
+[2021-10-12 14:14:39.609] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 14:14:39.734] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 14:15:10.859] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adjMass.osim
+[2021-10-12 14:15:11.346] [info] Old version storage/motion file encountered
+[2021-10-12 14:15:11.347] [info] Storage: read data file = C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Run_20002_IK.mot (nr=79 nc=164)
+[2021-10-12 14:15:11.347] [info] .. assuming rotations in Degrees..
+[2021-10-12 14:15:47.661] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adjMass.osim
+[2021-10-12 14:16:19.760] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adjMass.osim
+[2021-10-12 14:16:53.824] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01_adjMass.osim
+[2021-10-12 14:16:54.824] [info] AbstractTool RRA loading model C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 14:16:54.958] [info] Loaded model subject01_scaled from file C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\Hamner2010_v4_subject01.osim
+[2021-10-12 14:16:55.020] [info] Adding force object set from C:/Users/Jordan/Documents/PhD/rra_tools/rra-optimization/HamnerOpt/subject01/Run_20002/Trial_1\RRA_reserves.xml

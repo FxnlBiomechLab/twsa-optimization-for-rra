@@ -12,6 +12,13 @@ import subprocess # copy/rename/move files
 # begin class def
 class rrasetup: # constructor method
     def __init__(self, trialpath, participant, condition, mass):
+        """
+        Constructor method for class rrasetup:
+            Returns an object initialized with file tags and folder paths 
+            specific to a single motion trial/simulation. This object posesses 
+            several methods to perform residual reduction steps as needed.  
+        """
+        
         # holdover properties from prior calibration tool implementation, these are not needed for the rra aspect
         #self.basefolder = basefolder
         #self.slope = slope
@@ -40,6 +47,11 @@ class rrasetup: # constructor method
         self.numMassItrs = 0
     
     def writeRRATool(self):
+        """
+        Short helper function:
+            Configures and prints the xml setup file for RRA using settings 
+            specified within the rrasetup class properties.
+        """
         # create an RRA tool and set the initial settings
         rraTool = osim.RRATool()
         rraTool.setName("RRA")
@@ -62,7 +74,13 @@ class rrasetup: # constructor method
         return(btoolprinted) 
 
     def initialRRA(self, createTasks = True, createReserves = True, createExtLoads = True):
-
+        """
+        Performs an initial RRA iteration using a scaled, non-mass adjusted model.
+            Optional keyword arguments: 
+                createTasks -- boolean with default to true. Calls createTasks method unless set to false.
+                createReserves -- boolean with default to true. Calls createReseves method unless set to false. 
+                createExtLoads -- boolean with default to true. Calls createExtLoads method unless set to false. 
+        """
         ikdata=osim.Storage(os.path.join(self.fileset.trialpath,self.fileset.kinfile))
         timedata = osim.ArrayDouble()
         ikdata.getTimeColumn(timedata)
@@ -95,6 +113,12 @@ class rrasetup: # constructor method
         return
         
     def runMassItrsRRA(self):
+        """
+        Performs a series of RRA iterations with mass adjustments.
+            Use after the initial RRA iteration to perform model mass adjustments 
+            until the detected mass change is less than 0.001 kg. 
+            Maximum number of iterations is 10.
+        """
         # FUNCTION RUNMASSITRSRRA() performs up to 10 iterations of RRA
         # until the recomended mass change is less than the threshold
         # 0.001. Note: call the method as "obj = self.runMassItersRRA()"
@@ -139,9 +163,25 @@ class rrasetup: # constructor method
 
 
     def adjMass(self):
+        """
+        Edits the model to make recommended mass adjustments.
+            This helper funciton is called by initialRRA and runMassItrsRRA. 
+            Reads the recommended mass adjustments from the RRA log file, 
+            and makes mass and COM edits to the model.
+        """
         #import re
         # Read recommended mass adjustment
-        logfile = os.path.join(self.toolsettings.resultspath,'out.log')
+        logfile_a = os.path.join(self.toolsettings.resultspath,'out.log') # v3.x - v4.1
+        logfile_b = os.path.join(self.toolsettings.resultspath,'opensim.log') # v4.2
+
+        if os.path.is_file(logfile_a):
+            logfile = logfile_a
+        elif os.path.is_file(logfile_b):
+            logfile = logfile_b
+        else:
+            print('No matching log file found!')
+
+        
         regexp = re.compile(r"\*  Total mass change: ?([0-9.]+)?") # line to search for in file
         
         with open(logfile) as f: 
@@ -171,7 +211,15 @@ class rrasetup: # constructor method
         model.printToXML(os.path.join(self.trialpath,self.fileset.adjname))
         return(mass_change)
             
-    def createReservesFile(self, skip_coords = ["bp_tx","bp_ty"], OptimalForce = 1600):
+    def createReservesFile(self, skip_coords = ["bp_tx","bp_ty"], ReserveForce = 1600, ResidualForce = 100):
+        """
+        Configures and prints the reserve actuators force set to xml file.
+        Optional keyword arguments: 
+            skip_coords -- a list of strings specifying any coordinates to not actuate (will be given an optimal force of 1)
+                           These will typically be untracked or free coordinates.
+            ReserveForce -- a numeric input to specify the optimal force for all other reserves (default is 1600)
+            ResidualForce -- a numeric input to specify the optimal force for residual actuators (default is 100)
+        """
         mod = osim.Model(self.modfullpath)
         s = mod.initSystem()
         # create set of actuators
@@ -189,23 +237,23 @@ class rrasetup: # constructor method
                     cm = mod.getBodySet().get("pelvis").getMassCenter()
                     if "tilt" in cname:
                         curAct = osim.CoordinateActuator()
-                        curAct.setOptimalForce(150)
+                        curAct.setOptimalForce(ResidualForce)
                         curAct.set_coordinate(cname)
                         curAct.setName("MZ")
                     elif "list" in cname:
                         curAct = osim.CoordinateActuator()
-                        curAct.setOptimalForce(150)
+                        curAct.setOptimalForce(ResidualForce)
                         curAct.set_coordinate(cname)
                         curAct.setName("MX")
                     elif "rotation" in cname:
                         curAct = osim.CoordinateActuator()
-                        curAct.setOptimalForce(150)
+                        curAct.setOptimalForce(ResidualForce)
                         curAct.set_coordinate(cname)
                         curAct.setName("MY")
                     elif "tx" in cname:
                         curAct = osim.PointActuator()
                         curAct.set_body("pelvis")
-                        curAct.setOptimalForce(150)
+                        curAct.setOptimalForce(ResidualForce)
                         curAct.set_direction(osim.Vec3(1,0,0))
                         curAct.set_point(cm)
                         curAct.set_point_is_global(False)
@@ -214,7 +262,7 @@ class rrasetup: # constructor method
                     elif "ty" in cname:
                         curAct = osim.PointActuator()
                         curAct.set_body("pelvis")
-                        curAct.setOptimalForce(150)
+                        curAct.setOptimalForce(ResidualForce)
                         curAct.set_direction(osim.Vec3(0,1,0))
                         curAct.set_point(cm)
                         curAct.set_point_is_global(False)
@@ -223,7 +271,7 @@ class rrasetup: # constructor method
                     elif "tz" in cname:
                         curAct = osim.PointActuator()
                         curAct.set_body("pelvis")
-                        curAct.setOptimalForce(150)
+                        curAct.setOptimalForce(ResidualForce)
                         curAct.set_direction(osim.Vec3(0,0,1))
                         curAct.set_point(cm)
                         curAct.set_point_is_global(False)
@@ -236,7 +284,7 @@ class rrasetup: # constructor method
                     if cname in skip_coords:
                         curAct.setOptimalForce(1)
                     else:
-                        curAct.setOptimalForce(OptimalForce)
+                        curAct.setOptimalForce(ReserveForce)
                 curAct.setMaxControl(1000)
                 curAct.setMinControl(-1000)
 
@@ -268,50 +316,61 @@ class rrasetup: # constructor method
         return(success)
 
     def createTasksFile(self, skip_coords = ["bp_tx","bp_ty"], Kp = 1600, UniformWeights = True, UserWeights = []):
-            
-            Kv = 2*math.sqrt(Kp) # enforce critical damping
-            
-            mod = osim.Model(self.modfullpath)
-            s = mod.initSystem()
-            
-            #print("creating task set")
-            task_set = osim.CMC_TaskSet()
-            coords = mod.getCoordinateSet()
+        """
+        Configures and prints the tracking task set to xml file.
+        Optional keyword arguments: 
+            skip_coords -- list of strings specifying coordinates that will not be tracked (which are otherwise unconstrained)
+            Kp -- numeric value for proportional gain of the tracking weight controller (default = 1600) 
+            UniformWeights -- boolean to either use equal weights for all tasks (default = True), 
+                              or to use predefined, stronger weights for certain coordinates (False). 
+            (Not used) UserWeights -- future incorporation will allow use to specify any weights using name value pairs.
+        """    
+        Kv = 2*math.sqrt(Kp) # enforce critical damping
+        
+        mod = osim.Model(self.modfullpath)
+        s = mod.initSystem()
+        
+        #print("creating task set")
+        task_set = osim.CMC_TaskSet()
+        coords = mod.getCoordinateSet()
 
-            for c in range(0,coords.getSize()-1):
-                if not(coords.get(c).isConstrained(s)):
-                    cname = coords.get(c).getName()
-                    if not(cname in skip_coords):
-                        curTask = osim.CMC_Joint(cname)
-                        curTask.setName(cname)
-                        curTask.setKP(Kp)
-                        curTask.setKV(Kv)
-                        curTask.setActive(True,False,False)
-                        curTask.setOn(True)
+        for c in range(0,coords.getSize()-1):
+            if not(coords.get(c).isConstrained(s)):
+                cname = coords.get(c).getName()
+                if not(cname in skip_coords):
+                    curTask = osim.CMC_Joint(cname)
+                    curTask.setName(cname)
+                    curTask.setKP(Kp)
+                    curTask.setKV(Kv)
+                    curTask.setActive(True,False,False)
+                    curTask.setOn(True)
 
-                        if UniformWeights:
+                    if UniformWeights:
+                        curTask.setWeight(1,1,1)
+                    else:
+                        # add statement to match userdefined weights (in MATLAB: contains(userNames, cname))
+                        if "pelvis" in cname:
                             curTask.setWeight(1,1,1)
+                        elif cname in ['flex_extension','axial_rotation','lat_bending','L5_S1_FE','L5_S1_LB','L5_S1_AR']:
+                            curTask.setWeight(5,1,1)
+                        elif "ankle" in cname:
+                            curTask.setWeight(20,1,1)
+                        elif "knee" in cname:
+                            curTask.setWeight(10,1,1)
+                        elif "hip" in cname:
+                            curTask.setWeight(5,1,1)
                         else:
-                            # add statement to match userdefined weights (in MATLAB: contains(userNames, cname))
-                            if "pelvis" in cname:
-                                curTask.setWeight(1,1,1)
-                            elif cname in ['flex_extension','axial_rotation','lat_bending','L5_S1_FE','L5_S1_LB','L5_S1_AR']:
-                                curTask.setWeight(5,1,1)
-                            elif "ankle" in cname:
-                                curTask.setWeight(20,1,1)
-                            elif "knee" in cname:
-                                curTask.setWeight(10,1,1)
-                            elif "hip" in cname:
-                                curTask.setWeight(5,1,1)
-                            else:
-                                curTask.setWeight(1,1,1)
+                            curTask.setWeight(1,1,1)
 
-                        task_set.cloneAndAppend(curTask)    
+                    task_set.cloneAndAppend(curTask)    
 
-            success = task_set.printToXML(os.path.join(self.trialpath, self.fileset.taskfile))
-            return(success)
+        success = task_set.printToXML(os.path.join(self.trialpath, self.fileset.taskfile))
+        return(success)
 
     def createExtLoads(self):
+        """
+        Configures and prints the external loads specification xml file.
+        """
         extLoads = osim.ExternalLoads()
         exf = osim.ExternalForce()
         exfl = osim.ExternalForce()
@@ -340,11 +399,25 @@ class rrasetup: # constructor method
         extLoads.cloneAndAppend(exfl)
         
         extLoads.setDataFileName(os.path.join(self.trialpath, self.fileset.grffile))
-        extLoads.setExternalLoadsModelKinematicsFileName(os.path.join(self.trialpath, self.fileset.kinfile))
+        #extLoads.setExternalLoadsModelKinematicsFileName(os.path.join(self.trialpath, self.fileset.kinfile))
         b = extLoads.printToXML(os.path.join(self.trialpath, self.fileset.extloadsetup))
         return(b)
 
     def optimizeTrackingWeights(self,mass = 75, min_itrs = 25, max_itrs = 75,fcn_threshold = 2, wRes = 2, wErr = 1, pRes = 3, pErr = 3):
+        """
+        Performs the tracking weight optimization algorithm using the mass adjusted model. 
+        Optional keyword arguments: 
+            min_itrs -- integer to specify a minimum number of iterations to use (default = 25)
+            max_itrs -- integer to specify a maximum number of iterations (default = 75)
+            fcn_threshold -- numeric input to specify target cost function value for good enough convergence 
+            wRes -- numeric multiplier for the residual cost term (default = 2) 
+            wErr -- numeric multiplier for the tracking errors cost term (default = 1)
+            pRes -- numeric polynomial power for the residual cost term  
+            pErr -- polynomial power for the tracking errors cost term
+
+        Additional hidden methods contained are helper functions to this main 
+        tracking weight optimization method.   
+        """
         #**************************************************************************
         # OPTIMIZE RESIDUAL FORCES AND TRACKING ERRORS
         #**************************************************************************
@@ -416,19 +489,6 @@ class rrasetup: # constructor method
             #Set objective function parameters (altering paramters will set higher or
                 #lower precedence on residuals, and errors
 
-            # C1
-            #         S.wRes = 2 %**multiplication factor
-            #         S.wErr = 1
-            #         S.pRes = 4 %**exponential factor
-            #         S.pErr = 5
-
-            # C2,3
-            #         S.wRes = 1 %**multiplication factor
-            #         S.wErr = 1
-            #         S.pRes = 4 %**exponential factor
-            #         S.pErr = 4
-
-            # C4
             S.wRes = wRes #  multiplication factor
             S.wErr = wErr
             S.pRes = pRes #  exponential factor
@@ -442,12 +502,10 @@ class rrasetup: # constructor method
             S.fnew = 10000
 
             #Set iteration limit
-            # Original value was 200
-            #min_itrs = 25, max_itrs = 75,fcn_threshold = 2
+
             S.thresh = fcn_threshold
             S.i_min = min_itrs
             S.i_max = max_itrs
-            #itr=0
             S.itr = 0
 
             #Run RRA with default values
@@ -456,7 +514,7 @@ class rrasetup: # constructor method
 
             #set RRA parameters (tool name, model files, task list name, results dir)
             rratool.setName('optItr_' + str(S.itr))
-            rratool.setModelFilename(os.path.join(self.fileset.trialpath,self.fileset.adjname)) #ratool.setModelFilename(os.path.join(self.fileset.trialpath,self.fileset.adjmodelfile_massonly))
+            rratool.setModelFilename(os.path.join(self.fileset.trialpath,self.fileset.adjname)) 
             rratool.setOutputModelFileName(os.path.join(self.fileset.optpath,self.fileset.adjname))
             rratool.setResultsDir(os.path.join(self.fileset.optpath,'Results'))
             rratool.setTaskSetFileName(newtaskSetFilename)
@@ -506,7 +564,7 @@ class rrasetup: # constructor method
         print('solution found, or max iterations reached')
         # Find the best solution and re-run it to make sure our results are current
         objVals = np.array(S.ObjFuncValues)
-        #idx = [i for i, x in enumerate(objVals) if objVals == objVals.min() ]
+
         for i in range(0,len(objVals)):
             if objVals[i] == objVals.min():
                 idx = i
@@ -541,7 +599,6 @@ class rrasetup: # constructor method
 
 
         #Run RRA tool from command line inside matlab
-        #     options = ' -L "C:\Program Files\OpenSim 3.1\plugins\ExpressionBasedCoordinateForce.dll"'
         if not(os.path.isdir(self.fileset.finalpath)):
             os.mkdir(self.fileset.finalpath)
 
@@ -552,8 +609,6 @@ class rrasetup: # constructor method
         os.system(command_rra)
 
         os.chdir(mydir)
-
-        # Record final time, plot results, print optimization summary
 
 
         
@@ -586,9 +641,6 @@ class rrasetup: # constructor method
             else:
                 trackingWeights.rmsNormFactor.append(rmsNormFactor_rot)
             
-            #if currWeightName in ['pelvis_tx','pelvis_ty','pelvis_tz','flex_extension','lat_bing','axial_rotation','L5_S1_FE','L5_S1_LB','L5_S1_AR']:
-                #Increase penalty on pelvis and lumbar tracking
-                #trackingWeights.rmsNormFactor[n] = 0.5*trackingWeights.rmsNormFactor[n]
         
         return(trackingWeights)
     #readTrackingWeights function
@@ -780,20 +832,17 @@ class rrasetup: # constructor method
                     #If we are in the green, tend to decrease the weight
                     #t = randsample([-1,-1,-1,0,1],1)
                     t = sample([-2,-1,-1,0,1],1) # JS
-                    #disp([S(i_mot).xcurrent(i_coord).name,': green, t=',num2str(t),' rmsErr=',num2str(S(i_mot).xcurrent(i_coord).rmsErr)])
                 elif S.xcurrent.rmsErr[i_coord] > ub:
                     print('red')
                     #If we are in the red, tend to increase the weight
                     #t = randsample([-1,0,1,1,1],1)
                     t = sample([-1,0,1,1,2],1) # JS
-                    #disp([S(i_mot).xcurrent(i_coord).name,': red, t=',num2str(t),' rmsErr=',num2str(S(i_mot).xcurrent(i_coord).rmsErr)])
                 else:
                     print('yellow')
                     #Otherwise, equal chances
                     #t = randsample([-1,0,1],1)
                     t = sample([-2,0,-1,0,1,0,2],1) # JS
-                    #disp([S(i_mot).xcurrent(i_coord).name,': yellow, t=',num2str(t),' rmsErr=',num2str(S(i_mot).xcurrent(i_coord).rmsErr)])
-                
+                    
                 print('resolution')
                 #Use finer resolution as we get further along
                 if S.itr<=math.floor(S.i_max/2):
@@ -811,18 +860,20 @@ class rrasetup: # constructor method
                 print('tau: ' + str(tau))
                 S.xnew.values[i_coord] = tau*S.xcurrent.values[i_coord]
 
-
-            print('Weights: ' + str(S.xnew.values))
-            print('tested weights: ' + str(S.TestedSolutions))
-            xunique = True
             #Check if this solution has been tested previously
-            # for x in range(0,len(S.TestedSolutions)):
-            #     if S.TestedSolutions[x] == S.xnew.values:
-            #         print('checking unique...')
-            #         xunique = False
-            #         break
-            #     else:
-            #         xunique = True
+            for x in range(0,len(S.TestedSolutions)):
+                 if np.array_equal( S.TestedSolutions[x], np.array(S.xnew.values) ):
+                     print('Identical weights already used, reselecting...')
+                     xunique = False
+                     break
+                 else:
+                     xunique = True
+            #all(first == x for x in iterator)
+
+        print('Weights: ' + str(S.xnew.values))
+        print('tested weights: ' + str(S.TestedSolutions))
+        #xunique = True
+            
 
         print('tracking weights: ' + str(S.xnew))
         #=========================================
@@ -862,11 +913,7 @@ class rrasetup: # constructor method
         mod = osim.Model(os.path.join(self.fileset.trialpath,self.fileset.adjname))
         state = mod.initSystem()
         body_mass = mod.getTotalMass(state)
-        #S_itr = self._optStruct() # initialize data structure
-        #S_itr.wRes = S.wRes #  multiplication factor
-        #S_itr.wErr = S.wErr
-        #S_itr.pRes = S.pRes #  exponential factor
-        #S_itr.pErr = S.pErr
+
         S = self.__calculateObjectiveFunction__(S,body_mass)
 
         #Store the solutions we have explored
@@ -880,9 +927,9 @@ class rrasetup: # constructor method
     # Function: Framework for initalizing optimization loop using parallel or std
     def __executeRRAOptLoop__(self,S,body_mass):
         print('entering opt loop')
-        #itr=i # itr = 1 #original line (does not keep every OPT result)
+
         #Display current iteration
-        #fprintf('Iteration Number = #d\n\n',itr)
+
 
         if S.itr>0:
             print('Current OF value: ',str(S.ObjFuncValues[S.itr]))
@@ -978,7 +1025,7 @@ class rrafiles:
         self.masssetupfile = 'RRA_Setup_massItrs.xml'
         self.genericsetup = 'DrFrankenSpine_RRA_Setup.xml'
 
-        # adjname = self.modelname.replace(".osim","_adj.osim")
+
         
 # define data class used to setup the OpenSim RRAtool. Is used as a property in the main class         
 class rraoptions:
