@@ -4,13 +4,13 @@ config.participant = 'Hamner2010_v4_subject01';
 config.conditions = {'Run_20002','Run_30002','Run_40002','Run_50002'}
 config.trialnums = 1:3
 
-for c = 3%:4 % you can use parfor if you have the parallel computing toolbox to run all conditions simultaneously
+for c = 1:4 % you can use parfor if you have the parallel computing toolbox to run all conditions simultaneously
 
     %% analyses
     addpath('..\HamnerOpt\')
     import rraTools.*   
     import org.opensim.modeling.*
-    for t = 1%:3 %config.trialnums
+    for t = config.trialnums
         
         mydir = pwd; % get current folder (where code is running from)
         cd('..\') % move up one folder
@@ -33,27 +33,14 @@ for c = 3%:4 % you can use parfor if you have the parallel computing toolbox to 
         % after 'ReserveForce' to increase or decrease the ideal torque
         % actuators applied at each joint.
         r.writeReservesFile('ReserveForce',2000,'ResidualForce',75)
-        %%
+        %% Run the first iteration of RRA 
         r = r.runInitialRRA()
-        %%
+        %% Run remaining mass iterations
         r = r.runMassItrsRRA()
-        %%
-        
-        % get peak net ground reaction force and use to normalize residuals
-        % in the optimizer
-        maxGRF = r.readPeakExtForce()
-        
-        % specify kinematic error tolerances for normalization. Between 2
-        % and 5 degrees (rotation) and 2-3 cm (translation) is likely
-        % appropriate, but may vary between labs and data collection
-        % systems.
-        rotTol = 5; % specify in degrees. TWSA will convert to rad
-        transTol = 0.03; % specify in m.
-        
-        % run the TWSA with all optional inputs assigned. Overwrite any
-        % results currently saved in the folder.
-        r.optimizeTrackingWeights('overwrite',true,'min_itrs',25,'max_itrs',200,'fcn_threshold',1,...
-            'wRes',3,'wErr',2,'pRes',3,'pErr',2,'ResidualNorm',maxGRF,'RotationNorm',rotTol,'TranslationNorm',transTol)
+        %% setup and run the TWSA
+                
+        % run the TWSA with defaults. 
+        r.optimizeTrackingWeights()
     end
 end
 
