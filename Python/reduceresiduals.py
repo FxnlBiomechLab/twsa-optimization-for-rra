@@ -12,7 +12,7 @@ import subprocess # copy/rename/move files
 
 # begin class def
 class rrasetup: # constructor method
-    def __init__(self, trialpath, participant, condition, mass):
+    def __init__(self, trialpath, participant, condition):
         """
         Constructor method for class rrasetup:
             Returns an object initialized with file tags and folder paths 
@@ -21,7 +21,6 @@ class rrasetup: # constructor method
         """
         
         # class properties
-        self.mass = mass
         self.participant = participant
         self.condition = condition
         self.trialpath = trialpath
@@ -365,7 +364,7 @@ class rrasetup: # constructor method
 
                     if UniformWeights:
                         if cname in UserWeights.keys():
-                            curtask.setWeight(UserWeights[cname],1,1)
+                            curTask.setWeight(UserWeights[cname],1,1)
                         else:
                             curTask.setWeight(1,1,1)
                         
@@ -374,7 +373,7 @@ class rrasetup: # constructor method
                         # add statement to match userdefined weights (in MATLAB: contains(userNames, cname))
                         
                         if cname in UserWeights.keys():
-                            curtask.setWeight(UserWeights[cname],1,1)
+                            curTask.setWeight(UserWeights[cname],1,1)
                         elif "pelvis" in cname.lower():
                             curTask.setWeight(1,1,1)
                         elif cname in ['flex_extension','axial_rotation','lat_bending','L5_S1_FE','L5_S1_LB','L5_S1_AR']:
@@ -1124,7 +1123,7 @@ class rrafiles:
         self.taskfile = 'RRA_tasks.xml'
         self.rrasetupfile = 'RRA_Setup.xml'
         self.masssetupfile = 'RRA_Setup_massItrs.xml'
-        self.genericsetup = 'DrFrankenSpine_RRA_Setup.xml'
+
 
 
         
