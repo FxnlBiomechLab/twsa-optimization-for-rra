@@ -394,15 +394,10 @@ classdef rrasetup
             % UserWeights - a cell array containing the coordinate string
             %   and desired weight for any non-constrained coordinates.
             %   Coordinates not named in this variable will use the default
-            %   weights. To use the same weight for each side, a partial
-            %   coordinate name can be specified (e.g. {'ankle'} rather than
-            %   {'ankle_angle_l','ankle_angle_r'}). Names and weights 
-            %   should be supplied in the following syntax: 
-            %   "{'ankle','knee','hip';25,10,5}" 
-            %   to be parsed correctly. Use name value pair entry (e.g.
-            %   writeTasksFile('UserWeights', {name_array;weight_array} )
-            %   Note, user supplied weights are ignored if 'UniformWeights'
-            %   is set to true.
+            %   weights. Names and weights should be supplied in the
+            %   following syntax:
+            %   'UserWeights',{'ankle_angle_r','ankle_angle_l';5,5} to be
+            %   parsed correctly. Do not use partial names of coordinates.
             %
             
             defaultKp = 1600;

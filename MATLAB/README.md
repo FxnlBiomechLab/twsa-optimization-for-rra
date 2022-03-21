@@ -2,16 +2,30 @@
 An evolutionary algorithm-based optimization for tracking weights in the OpenSim Residual Reduction Algorithm (RRA).
 
 ## Contents
-* "+rraTools" - This folder contains the MATLAB classes used in the optimization scheme. The folder containing "+rraTools" needs to be in the MATLAB path. _Do not add "+rraTools" directly to the path!_ These classes are accessible to MATLAB after calling  "import rraTools.* ". 
-* "+rraTools\rrasetup.m" - Class containing the main attributes and methods required to perform the tracking weight optimization.
-* "+rraTools\rrafiles.m" - Helper class with input and output filename specifications used by the RRA scheme.
-* "+rraTools\rraoptions.m" - Helper class with attributes used to assign values to the required options in the OpenSim RRA tool.
-* "+rraTools\extloadoptions.m" - Helper class with attributes used to specify ground reaction column identifiers and body name on which to apply force.
+**main code**
+* +rraTools</span> - This folder contains the MATLAB classes used in the optimization scheme. The folder containing "+rraTools" needs to be in the MATLAB path. _Do not add "+rraTools" directly to the path!_ These classes are accessible to MATLAB after calling  "import rraTools.* ". 
+
+* +rraTools\rrasetup.</span>m - Class containing the main attributes and methods required to perform the tracking weight optimization.
+* +rraTools\rrafiles.</span>m - Helper class with input and output filename specifications used by the RRA scheme.
+* +rraTools\rraoptions.</span>m - Helper class with attributes used to assign values to the required options in the OpenSim RRA tool.
+* +rraTools\extloadoptions.</span>m - Helper class with attributes used to specify ground reaction column identifiers and body name on which to apply force.
 
 To include this namespace in your code use:
 ```{MATLAB}
 import rraTools.*
 ```
+
+**example scripts**
+* example_defaultTWSA.m - demonstrates how to set up the class and run methods using default parameters.
+
+* example_customTWSA.m - Sets up the class and runs TWSA using customized cost function weights and normalization terms.
+
+* example_specifyTrackingWeights.m - This example demonstrates how to specify unique tracking weights for the initialRRA() and mass iterations.
+
+* TWSA_paper_setup.m - This will run the TWSA with identical parameters as were used in [the published paper](https://www.biorxiv.org/content/10.1101/2021.10.06.463431v1.full.pdf).
+
+
+**housekeeping**
 
 required MATLAB libraries:
 
@@ -34,6 +48,7 @@ Calling the constructor **"obj = rrasetup(trialpath, participant, condition, mas
 **initDelMass** - mass change from first iteration of RRA
 **totalDelMass** - total mass change from RRA mass iterations
 **numMassItrs** - number of RRA iterations until mass changes converged
+
 #### Methods: 
 1. **"obj = rrasetup(trialpath, participant, condition, mass)"**
 2. **initialRRA()** - run RRA on scaled model, generate mass adjusted model
@@ -44,7 +59,7 @@ Calling the constructor **"obj = rrasetup(trialpath, participant, condition, mas
 * **writeReservesFile()** - write reserve actuators force set as xml
 * **writeTasksFile()** - write out tracking tasks as xml
 * **writeExtLoads()** - write out external loads specification file based on options currently specified in obj.extloadsettings
-
+* **readPeakExtForce()** - caculate the max net ground reaction force
 * Additional internal helpers and nested classes are defined, but not described here.
 
 ### SubClass: rrafiles
