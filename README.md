@@ -10,7 +10,7 @@ Below is a brief description of the TWSA. For full details, refer to the [publis
 
 The TWSA formulates an objective function as a weighted sum of the residual forces and kinematic errors:
 
-![equation1](https://latex.codecogs.com/svg.image?W_{R}\sum_{i=1}^{m}(w_{i}R_{i})^{p_{R}}&plus;W_{E}\sum_{j=1}^{n}(w_{j}R_{j})^{p_{E}})
+![equation1](https://latex.codecogs.com/svg.image?W_{R}\sum_{i=1}^{m}(w_{i}R_{i})^{p_{R}}&plus;W_{E}\sum_{j=1}^{n}(w_{j}E_{j})^{p_{E}})
 
 The relative penalty on residual forces and kinematic errors are controlled by the weights W<sub>R</sub> and W<sub>E</sub>, respectively. 
 
