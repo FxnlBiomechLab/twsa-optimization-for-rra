@@ -459,12 +459,12 @@ class rrasetup: # constructor method
         grf.getDataColumn(lstart+1,lforce_y)
         grf.getDataColumn(lstart+2,lforce_z)
         net_force = []
-        print(rforce_x.getSize())
+        #print(rforce_x.getSize())
         for x in range(0,rforce_x.getSize()-1):
             left_val =  math.sqrt(lforce_x.get(x)**2 + lforce_y.get(x)**2 + lforce_z.get(x)**2)
             right_val = math.sqrt(rforce_x.get(x)**2 + rforce_y.get(x)**2 + rforce_z.get(x)**2) 
             value =  left_val + right_val
-            print(value) 
+            #print(value) 
             net_force.append( value )
         
         peak_force = max(net_force)
@@ -569,6 +569,8 @@ class rrasetup: # constructor method
             with open(Sresults_file,'rb') as input_file:
                 S = pickle.load(input_file)
                 #itr = S.itr
+                S.i_min = min_itrs
+                S.i_max = max_itrs
         else:
             S = self._optStruct() # initialize data structure
 

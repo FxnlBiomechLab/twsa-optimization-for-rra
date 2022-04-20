@@ -841,6 +841,12 @@ classdef rrasetup
                 load(Sresults_file);
 %                 i = i+1;
                 itr = i;
+                
+                % updated assignments so users can force more iterations if
+                % desired.
+                S.i_min = inpts.Results.min_itrs;
+                S.i_max = inpts.Results.max_itrs;
+                S.TestedSolutions(:,inpts.Results.max_itrs) = 0;
             else
             %========================
             % Set parameters

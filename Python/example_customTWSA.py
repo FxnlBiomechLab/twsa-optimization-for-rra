@@ -44,3 +44,5 @@ rraopts.optimizeTrackingWeights(overwrite = True, min_itrs = 25, max_itrs = 75, 
 # TranslationNorm = 0.04 - normalize the translational tracking errors by 4 cm in the cost function
 #
 
+
+# %%
