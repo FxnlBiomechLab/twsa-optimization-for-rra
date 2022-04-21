@@ -47,4 +47,4 @@ Hamner SR and Delp SL. Muscle contributions to fore-aft and vertical body mass c
 ## Acknowledgment
 This code is provided under the permissive MIT license. You are free to use, modify, and redistribute it for any purpose. If you use this tool in your research, please cite the following paper:
 
-Sturdy JT, Silverman AK, Pickle NT. Automated optimization of residual reduction algorithm parameters in OpenSim. Preprint. https://doi.org/10.1101/2021.10.06.463431
+Sturdy JT, Silverman AK, Pickle NT. Automated optimization of residual reduction algorithm parameters in opensim. Journal of Biomechanics. 2022 Apr 8:111087. https://doi.org/10.1101/2021.10.06.463431
