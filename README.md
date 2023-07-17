@@ -5,7 +5,9 @@ This software package automates the process of optimizing tracking weights. Opti
 
 ## How it works
 
-Below is a brief description of the TWSA. For full details, refer to the [published paper](https://www.biorxiv.org/content/10.1101/2021.10.06.463431v1.full.pdf).
+Below is a brief description of the TWSA. For full details, refer to the [published paper](https://doi.org/10.1016/j.jbiomech.2022.111087).
+
+Our preprint is also available [here](https://www.biorxiv.org/content/10.1101/2021.10.06.463431v1.full.pdf).
 ###  *Formulating the objective function*
 
 The TWSA formulates an objective function as a weighted sum of the residual forces and kinematic errors:
@@ -47,4 +49,5 @@ Hamner SR and Delp SL. Muscle contributions to fore-aft and vertical body mass c
 ## Acknowledgment
 This code is provided under the permissive MIT license. You are free to use, modify, and redistribute it for any purpose. If you use this tool in your research, please cite the following paper:
 
-Sturdy JT, Silverman AK, Pickle NT. Automated optimization of residual reduction algorithm parameters in opensim. Journal of Biomechanics. 2022 Apr 8:111087. https://doi.org/10.1101/2021.10.06.463431
+Sturdy JT, Silverman AK, Pickle NT. Automated optimization of residual reduction algorithm parameters in opensim. Journal of Biomechanics. 2022 Apr 8:111087. 
+https://doi.org/10.1016/j.jbiomech.2022.111087
